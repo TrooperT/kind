@@ -22,3 +22,7 @@ const clusterLabelKey = "io.x-k8s.kind.cluster"
 // nodeRoleLabelKey is applied to each "node" docker container for categorization
 // of nodes by role
 const nodeRoleLabelKey = "io.x-k8s.kind.role"
+
+// networkLabelKey is applied to each "node" docker container for network identification
+// of each node
+const networkLabelKey = "io.x-k8s.kind.network"
