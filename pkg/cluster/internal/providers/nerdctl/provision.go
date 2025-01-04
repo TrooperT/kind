@@ -137,7 +137,11 @@ func commonArgs(cluster string, cfg *config.Cluster, networkName string, nodeNam
 		"--tty",    // allocate a tty for entrypoint logs
 		// label the node with the cluster ID
 		"--label", fmt.Sprintf("%s=%s", clusterLabelKey, cluster),
-		// user a user defined network so we get embedded DNS
+		// label the node with attached network name for cloud-provider-kind
+		// TODO: discuss moving network name to a per-node args to allow for
+		// 				zonal simulation.
+		"--label", fmt.Sprintf("%s=%s", networkLabelKey, networkName),
+		// use a user defined network so we get embedded DNS
 		"--net", networkName,
 		// containerd supports the following restart modes:
 		// - no

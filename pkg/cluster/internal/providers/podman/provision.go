@@ -134,6 +134,10 @@ func commonArgs(cfg *config.Cluster, networkName string, nodeNames []string) ([]
 		"--net", networkName, // attach to its own network
 		// label the node with the cluster ID
 		"--label", fmt.Sprintf("%s=%s", clusterLabelKey, cfg.Name),
+		// label the node with attached network name for cloud-provider-kind
+		// TODO: discuss moving network name to a per-node args to allow for
+		// 				zonal simulation.
+		"--label", fmt.Sprintf("%s=%s", networkLabelKey, networkName),
 		// specify container implementation to systemd
 		"-e", "container=podman",
 		// this is the default in cgroupsv2 but not in v1
